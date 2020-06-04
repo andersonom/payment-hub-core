@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaymentHub.Application.Events;
+using PaymentHub.Application.ViewModels;
 using PaymentHub.Domain;
 
 namespace PaymentHub.WebApi.Controllers
@@ -20,7 +21,7 @@ namespace PaymentHub.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterTenant(Tenant tenant)
+        public async Task<IActionResult> RegisterTenant([FromBody]TenantViewModel tenant)
         {
             var res = await _tenantAppService.Register(tenant);
 

@@ -1,8 +1,17 @@
+using PaymentHub.Core.Messages;
+
 namespace PaymentHub.Application.Events
 {
-    public class TenantRegisterRejectedEvent
+  public class TenantRegisterRejectedEvent : Event
+  {
+    public TenantRegisterRejectedEvent(string name, string email, string cnpj)
     {
-
+      Name = name;
+      Email = email;
+      Cpnj = cnpj;
     }
-
+    public string Name { get; }
+    public string Email { get; }
+    public string Cpnj { get; }
+  }
 }
