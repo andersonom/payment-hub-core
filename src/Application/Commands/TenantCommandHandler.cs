@@ -7,7 +7,10 @@ using PaymentHub.Core.Messages.CommonMessages;
 
 namespace PaymentHub.Application.Commands
 {
-    public class TenantCommandHandler : IRequestHandler<CreateTenantCommand, bool>
+    public class TenantCommandHandler : 
+        IRequestHandler<RequestTenantCommand, bool>,
+        IRequestHandler<RegisterTenantCommand, bool>,
+        IRequestHandler<RejectTenantRegisterCommand, bool>
     {
         private readonly IMediatorHandler _mediatorHandler;
 
@@ -15,14 +18,36 @@ namespace PaymentHub.Application.Commands
         {
             _mediatorHandler = mediatorHandler;
         }
-        public async Task<bool> Handle(CreateTenantCommand message, CancellationToken cancellationToken)
+        public async Task<bool> Handle(RequestTenantCommand message, CancellationToken cancellationToken)
         {
-            if (!ValidateCommand(message)) return false;
+            if (!ValidateCommand(message))
+            {
+                //TODO Call the event to call the command
+                await _mediatorHandler.SendCommand(new RegisterTenantCommand(message.Name,
+                                                                             message.Email,
+                                                                             message.Cpnj));
+                return false;
+            }
+                //TODO Call the event to call the command
+                await _mediatorHandler.SendCommand(new RejectTenantRegisterCommand(message.Name,
+                                                                                   message.Email,
+                                                                                   message.Cpnj));
+            return true;
+        }
 
-            //TODO Add Tenent at repository
+        public async Task<bool> Handle(RegisterTenantCommand message, CancellationToken cancellationToken)
+        {
 
             //TODO CreateTenant.CreateEvent
 
+            //TODO Add Tenent at repository
+
+            return true;
+        }
+
+        public async Task<bool> Handle(RejectTenantRegisterCommand message, CancellationToken cancellationToken)
+        { 
+            //TODO CreateTenant.CreateEvent
             return true;
         }
 

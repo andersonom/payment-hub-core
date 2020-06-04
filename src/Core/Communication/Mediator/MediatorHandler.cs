@@ -19,9 +19,9 @@ namespace PaymentHub.Core.Communication.Mediator
             return await _mediator.Send(command);
         }
 
-        public async Task PublishEvent<T>(T myEvent) where T : Event
+        public async Task PublishEvent<T>(T evt) where T : Event
         {
-            await _mediator.Publish(myEvent);
+            await _mediator.Publish(evt);
 
             //TODO Save on Event Store with proper repository
         }

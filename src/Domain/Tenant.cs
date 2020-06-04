@@ -1,6 +1,8 @@
+using PaymentHub.Core.DomainObjects;
+
 namespace PaymentHub.Domain
 {
-    public class Tenant // : Entity, IAggregateRoot
+    public class Tenant : Entity, IAggregateRoot
     {
         //ctrop
         public string Name { get;  }
