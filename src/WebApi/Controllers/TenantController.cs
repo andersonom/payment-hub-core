@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaymentHub.Application.Events;
 using PaymentHub.Application.ViewModels;
-using PaymentHub.Domain;
 
 namespace PaymentHub.WebApi.Controllers
 {

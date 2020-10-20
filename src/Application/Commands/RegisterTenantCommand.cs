@@ -1,9 +1,8 @@
-using FluentValidation;
 using PaymentHub.Core.Messages;
 
 namespace PaymentHub.Application.Commands
 {
-  public class RegisterTenantCommand : Command
+    public class RegisterTenantCommand : Command
   {
     public RegisterTenantCommand(string name, string email, string cnpj)
     {

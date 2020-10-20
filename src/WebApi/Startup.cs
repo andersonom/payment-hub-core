@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NerdStore.Vendas.Application.Events;
 using PaymentHub.Application.AutoMapper;
@@ -22,7 +15,7 @@ using PaymentHub.Core.Messages.CommonMessages;
 
 namespace PaymentHub.WebApi
 {
-  public class Startup
+    public class Startup
   {
     public Startup(IConfiguration configuration)
     {
@@ -76,7 +69,7 @@ namespace PaymentHub.WebApi
         app.UseDeveloperExceptionPage();
       }
 
-      app.UseHttpsRedirection();
+     // app.UseHttpsRedirection();
 
       app.UseRouting();
 
